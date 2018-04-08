@@ -1,0 +1,10 @@
+hello
+ls
+pwd
+echo wadddup
+cd ..
+cd asg3
+numbers < input-test
+input-test > numbers
+exit
+
