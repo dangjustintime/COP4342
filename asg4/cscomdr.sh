@@ -9,10 +9,10 @@ while true; do
   for FILE in ${FILES[*]}; do
     if [ -d $FILE ]; then
       ((num_dir += 1))
-    elif [ -x $FILE ]; then
-      ((num_exe += 1))
-    elif [ -f $FILE -a ! -x $FILE]; then
+    elif [ -f $FILE -a ! -x $FILE ]; then
       ((num_files += 1))
+    elif [ -x $FILE ]; then
+      ((num_exe+= 1))
     fi
   done 
   echo -e "$num_dir directories, $num_files files, $num_exe executables"
@@ -21,6 +21,13 @@ while true; do
     if [[ -z "$FILE" ]]; then
       echo -e "\nBYE BYE\n"
       exit 1
+    elif [ -f $FILE -a ! -x $FILE ]; then
+      cat $FILE
+      echo -e "\n"
+    elif [ -d $FILE ]; then
+      cd $FILE
+    elif [ -x $FILE ]; then
+      ./$FILE
     else
       echo -e "\n$FILE"
     fi
