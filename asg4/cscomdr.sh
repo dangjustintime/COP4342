@@ -3,33 +3,37 @@ while true; do
   num_dir=0
   num_exe=0
   num_files=0
+  index=0
   echo -e "\n-- cscomdr --"
   echo -e "$(pwd)"
-  FILES=($(ls))
-  for FILE in ${FILES[*]}; do
-    if [ -d $FILE ]; then
-      ((num_dir += 1))
-    elif [ -f $FILE -a ! -x $FILE ]; then
-      ((num_files += 1))
-    elif [ -x $FILE ]; then
-      ((num_exe+= 1))
+  files=($(ls))
+  for file in ${files[*]}; do
+    if [ -d $file ]; then
+      files[index]="DIR:${files[index]}"
+      ((num_dir++))
+    elif [ -f $file -a ! -x $file ]; then
+      ((num_files++))
+    elif [ -x $file ]; then
+      files[index]="EXE:${files[index]}"
+      ((num_exe++))
     fi
+    ((index++))
   done 
   echo -e "$num_dir directories, $num_files files, $num_exe executables"
   PS3="Choose an entry from the list: "
-  select FILE in ${FILES[*]}; do
-    if [[ -z "$FILE" ]]; then
+  select file in ${files[*]}; do
+    if [[ -z "$file" ]]; then
       echo -e "\nBYE BYE\n"
       exit 1
-    elif [ -f $FILE -a ! -x $FILE ]; then
-      cat $FILE
+    elif [ -f $file -a ! -x $file ]; then
+      cat $file
       echo -e "\n"
-    elif [ -d $FILE ]; then
-      cd $FILE
-    elif [ -x $FILE ]; then
-      ./$FILE
+    elif [ -d $file ]; then
+      echo ${file:3}
+    elif [ -x $file ]; then
+      echo ${file:3}
     else
-      echo -e "\n$FILE"
+      echo -e "\n$file"
     fi
   done
 done
