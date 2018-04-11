@@ -29,9 +29,9 @@ while true; do
       cat $file
       echo -e "\n"
     elif [ -d $file ]; then
-      echo ${file:3}
+      echo "${file:4}"
     elif [ -x $file ]; then
-      echo ${file:3}
+      echo "${file:4}"
     else
       echo -e "\n$file"
     fi
