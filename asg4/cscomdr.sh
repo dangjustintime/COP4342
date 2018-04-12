@@ -24,8 +24,6 @@ function promptUser () {
 echo -e "\n-- cscomdr --"
 echo -e "$(pwd)"
 echo -e "$num_dir directories, $num_files files, $num_exe executables"
-PS1="111111111"
-PS2="222222222"
 PS3="Choose an entry from the list: "
 select file in ${files[*]}; do
   case $file in
@@ -38,7 +36,27 @@ select file in ${files[*]}; do
     *)
       ;;
   esac
-  if [ -f $file -a ! -x $file ]; then
+  if [ -z $file ]; then
+    echo "no entry chosen"
+    echo "bye bye"
+    exit 1
+  elif [ $file == "secret" ]; then
+    echo "I have a secret"
+    $has_key=0
+    for $temp in ${files[*]}; do
+      if [ "$key" = "secret.key"]; then
+        $temp = $(touch secret.key)
+	$has_key=1
+	$key = $temp
+      fi
+    done
+
+    if [ $has_key = 0 ]; then
+      read -rsn1 -p "Enter key: " key < /dev/tty
+    fi
+    openssl enc -d -a -k $key -aes-256-cbc -in secret
+    touch secret
+  elif [ -f $file -a ! -x $file ]; then
     cat $file
     echo -e "\n"
   elif [ -d $file ]; then
@@ -47,15 +65,13 @@ select file in ${files[*]}; do
     break
   elif [ -x $file ]; then
     ./$file
-  elif [ "$file" == "q" ]; then
-    echo "BYE BYE"
-    exit 1
-  else
-    echo -e "\n$file"
   fi
 done
 }
 
+trap "echo type SPACE to exit" SIGINT SIGTERM
+
+# main function
 getFiles
 while true; do
   promptUser
