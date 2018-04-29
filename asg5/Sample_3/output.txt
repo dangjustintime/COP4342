@@ -1,0 +1,5 @@
+0a1,4
+> GNU is not UNIX
+> Welcome to COP4342 - Unix Tools
+> Florida State University, Tallahassee
+> Diff is a very useful UNIX utility

@@ -1,0 +1,15 @@
+1,2c1,2
+< This is line one of file1 
+< welcome to cop4342
+---
+> This is line one of file2
+> welcome to UNIX tools
+4,5c4,5
+< This is a sample test case
+< Florida State, Tallahassee
+---
+> 12345678987654321
+> This is a sample test case
+6,7d5
+< GNU is Not UNIX
+< Linux is based on UNIX

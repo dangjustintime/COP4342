@@ -1,0 +1,22 @@
+'tty' stands for teletype, an archaic synonym for terminal
+UNIX API calls have detailed information in their man pages
+grep is an invaluable pattern mathing tool for searches within contents of files
+Shells and Terminals are not the same thing, shells run within a terminal
+Bash (i.e. Bourne-Again Shell) is derived from the Bourne Shell (i.e. sh)
+open(), read(), write() are system calls whereas printf() and scanf() are C library functions
+The write() system call writes bytes of data and has no facility for formatting output
+'tty' stands for teletype, an archaic synonym for terminal
+UNIX API calls have detailed information in their man pages
+grep is an invaluable pattern mathing tool for searches within contents of files
+Shells and Terminals are not the same thing, shells run within a terminal
+Bash (i.e. Bourne-Again Shell) is derived from the Bourne Shell (i.e. sh)
+open(), read(), write() are system calls whereas printf() and scanf() are C library functions
+The write() system call writes bytes of data and has no facility for formatting output
+'tty' stands for teletype, an archaic synonym for terminal
+UNIX API calls have detailed information in their man pages
+grep is an invaluable pattern mathing tool for searches within contents of files
+Shells and Terminals are not the same thing, shells run within a terminal
+Bash (i.e. Bourne-Again Shell) is derived from the Bourne Shell (i.e. sh)
+open(), read(), write() are system calls whereas printf() and scanf() are C library functions
+The write() system call writes bytes of data and has no facility for formatting output
+This is line 22 of this test file, expect 50 lines atmost in any test file for this project
