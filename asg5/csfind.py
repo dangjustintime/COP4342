@@ -4,16 +4,19 @@ from stat import *
 
 def main():
 	parser = argparse.ArgumentParser()
+	parser.add_argument('filename')
 	# name flag
 	parser.add_argument('-name')
 	# grep flag
 	parser.add_argument('-grep')
 	args = parser.parse_args()
 
+	filelist =  os.listdir(sys.argv[1])
+
+	for i in filelist:
+		print os.path.abspath(i)
+	
 	if args.name:
-		print "NAME"
-		print args.name
-		print os.listdir(args.name)
 	if args.grep:
 		print "GREP"
 		print args.grep
