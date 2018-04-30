@@ -13,6 +13,7 @@ def main():
 	if args.name:
 		print "NAME"
 		print args.name
+		print os.listdir(args.name)
 	if args.grep:
 		print "GREP"
 		print args.grep
